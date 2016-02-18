@@ -39,7 +39,7 @@ With the country code (here: "DE") and the language code (here: "DE") shall be t
 The XML file for the holidays has a similar structure (extract): Country Code and language must match on both Files!
 
 ```xml
-?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Holidays.Config>
   <Country>
     <CountryCode>DE</CountryCode>
@@ -88,25 +88,25 @@ Except for the fixed holiday "F", which with a modifier always day and month Poi
 
 Sounds possibly complicated the handling is however quite simple:
 
-```javascript
+```csharp
 HolidayMatrix holidayMatrix = new HolidayMatrix("DE", "DE", @"D:\states.config.xml", @"D:\holidays.config.xml");
 holidayMatrix.CurrentStateID = 2;  // Bayern als Bundesland setzen
 ```
 
 And now you can calculate:
 
-```javascript
+```csharp
 CalendarCalculator calendar = new CalendarCalculator( holidayMatrix );
 ```
 
 In addition the following properties are availible:
 
-```javascript
+```csharp
 int days = calendar.GetWorkingDays(new DateTime(2010, 3, 31), new DateTime( 2010,5, 3)); 
 ```
 
 
-```javascript
+```csharp
 HolidayMatrix.Holidays  // Liefert Liste aller Feiertage des gewählten Landes, Untergruppe Sprache und Untergruppe Bundesland/State
 
 CalendarCalculator.IsHoliday( DateTime )
